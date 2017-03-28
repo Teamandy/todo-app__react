@@ -1,18 +1,28 @@
 import React from 'react';
+import uuidV1 from 'uuid/v1';
 
 class AddTask extends React.Component{
 	constructor(){
 		super();
+		this.id = 0;
 	}
 	addTask(e){
 		e.preventDefault();
 		let newtask = {
 			descr: this.textInput.value,
-			category: this.textSelect.value
+			category: this.textSelect.value,
+			id: uuidV1()
 		};
-		this.props.addtask(newtask);
+		if(newtask.descr){
+			this.props.addtask(newtask);
+		} else{
+			alert('add a task first');
+		}
 	}	
 	render(){
+		const categories = this.props.categories.map(category => 
+			<option>{category}</option>
+		);
 		return (
 			<form className='app__form'>
 
@@ -24,9 +34,7 @@ class AddTask extends React.Component{
 				<div className="form-group text-center">
 					<h2><label htmlFor="select">Select task category</label></h2>
 					<select ref = {(select)=>{this.textSelect = select}} className="form-control" id="select">
-						<option>urgent</option>
-						<option>personal</option>
-						<option>job related</option>
+						{categories}
 					</select>
 				</div>
 

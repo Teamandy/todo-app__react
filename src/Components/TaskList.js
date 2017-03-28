@@ -5,11 +5,11 @@ class TaskList extends React.Component{
 	render(){
 		return (
 			<div className='app__task-list text-center'>
-				<h2>Your current tasklist</h2>
+				<h2>Your current tasklist:</h2>
 				<div className='list'>
 					<ol>
 						{this.props.tasks.map(
-							task => <TaskLine line={task}/>
+							task => <TaskLine deleteTask = {this.props.deleteTask} line={task}/>
 						)}
 					</ol>					
 				</div>

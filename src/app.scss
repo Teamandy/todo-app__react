@@ -1,6 +1,9 @@
 body{
-	background-color: pink;
-	h2 {
-		color: red;
-	}
+	background-color: #BCE667;
 }
+//header styles
+@import './styles/main__header';
+//TaskList styles
+@import './styles/tasklist';
+//footer styles
+@import './styles/main__footer';
